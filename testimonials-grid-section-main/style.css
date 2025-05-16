@@ -15,7 +15,7 @@
   --Dark-blue: hsl(219, 29%, 14%);
   --Black: hsl(0, 0%, 7%);
   --f-normal: 0.8rem;
-  --f-large: 1.6rem;
+  --f-large: 1.4rem;
   --fw-normal: 500;
   --fw-large: 600;
 }
@@ -30,11 +30,15 @@
 body {
   background-color: var(--Grey-100);
   height: 100vh;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: var(--f-normal);
+  font-weight: var(--fw-normal);
 }
 main {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 3rem 0rem;
 }
 .reviews {
   display: grid;
@@ -45,17 +49,21 @@ main {
   margin: 2rem;
   max-width: 1100px;
 }
-.reviews div {
-  padding: 1rem;
+.reviews > div {
+  box-shadow: 30px 56px 30px var(--Grey-200);
+  padding: 2rem;
   border-radius: 15px;
 }
 .rev1 {
   grid-area: rev1;
+  background: url("./images/bg-pattern-quotation.svg") no-repeat top right 20%;
   background-color: var(--Purple-500);
+  color: var(--White);
 }
 .rev2 {
   grid-area: rev2;
   background-color: var(--Grey-500);
+  color: var(--White);
 }
 .rev3 {
   grid-area: rev3;
@@ -64,6 +72,7 @@ main {
 .rev4 {
   grid-area: rev4;
   background-color: var(--Dark-blue);
+  color: var(--White);
 }
 .rev5 {
   background-color: var(--White);
@@ -72,9 +81,36 @@ main {
 .author {
   display: flex;
   gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 .author img {
+  border: 1px solid var(--White);
   border-radius: 50%;
-  width: 70px;
+  width: 3rem;
   aspect-ratio: 1;
+}
+h3 {
+  margin-bottom: 1rem;
+  font-size: var(--f-large);
+  font-weight: var(--fw-large);
+}
+@media screen and (max-width: 850px) {
+  .reviews {
+    grid-template-areas:
+      "rev1 rev1 rev2"
+      "rev3 rev4 rev4 "
+      "rev5 rev5 rev5";
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .reviews {
+    grid-template-areas: none;
+    grid-template-rows: repeat(5, 1fr);
+    margin: 1rem;
+  }
+  .reviews > div {
+    grid-area: auto;
+  }
 }
